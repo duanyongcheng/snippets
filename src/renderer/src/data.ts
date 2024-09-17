@@ -3,7 +3,7 @@ export interface DataType {
   content: string
 }
 
-export const data: DataType[] = [
+export const codes: DataType[] = [
   {
     id: 1,
     content: 'Sunt occaecat do reprehenderit mollit eiusmod mollit id enim.'

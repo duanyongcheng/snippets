@@ -1,9 +1,7 @@
-import { DataType } from '@renderer/assets/data'
-import { useState } from 'react'
-import { data as codes } from '@renderer/assets/data'
+import useCode from '@renderer/hooks/useCode'
 
 export default function Result(): JSX.Element {
-  const [data] = useState<DataType[]>(codes)
+  const { data } = useCode()
   return (
     <main className="bg-slate-50 px-3 -mt-[7px] pb-1">
       {data.map((item, index) => (
