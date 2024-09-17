@@ -1,0 +1,14 @@
+body {
+  //   @apply bg-black;
+}
+.drag {
+  -webkit-app-region: drag;
+}
+
+.nodrag,
+input,
+select,
+textarea,
+option {
+  -webkit-app-region: no-drag;
+}
