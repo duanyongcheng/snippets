@@ -1,22 +1,52 @@
 import useCode from '@renderer/hooks/useCode'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import './style.scss'
+import classNames from 'classnames'
 
 export default function Result(): JSX.Element {
   const { data } = useCode()
-  const handelKeyDown = (e: KeyboardEvent): void => {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const handelKeyListener = (e: KeyboardEvent): void => {
     console.info(e.key)
     console.log(data.length)
+    // 在data.length循环
+    switch (e.code) {
+      case 'ArrowDown':
+        if (currentIndex < data.length - 1) {
+          setCurrentIndex(currentIndex + 1)
+        } else {
+          setCurrentIndex(0)
+        }
+        break
+      case 'ArrowUp':
+        if (currentIndex > 0) {
+          setCurrentIndex(currentIndex - 1)
+        } else {
+          setCurrentIndex(Math.max(data.length - 1, 0))
+        }
+        break
+      case 'Enter':
+        console.log(data[currentIndex].content)
+        navigator.clipboard.writeText(data[currentIndex].content)
+        break
+      default:
+        if (e.code.startsWith('Key')) {
+          console.log(e.code)
+          setCurrentIndex(0)
+        }
+    }
   }
   useEffect(() => {
-    document.addEventListener('keydown', handelKeyDown)
+    document.addEventListener('keydown', handelKeyListener)
     return (): void => {
-      document.removeEventListener('keydown', handelKeyDown)
+      document.removeEventListener('keydown', handelKeyListener)
     }
-  }, [data])
+  }, [data, currentIndex])
   return (
-    <main className="bg-slate-50 px-3 -mt-[7px] pb-1">
+    <main className="main">
+      {currentIndex}
       {data.map((item, index) => (
-        <div key={index} className="text-slate-700 truncate mb-2">
+        <div key={index} className={classNames(['item', { active: currentIndex === index }])}>
           {item.content}
         </div>
       ))}
