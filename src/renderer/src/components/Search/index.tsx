@@ -19,7 +19,7 @@ export default function Search(): JSX.Element {
         <input
           value={search}
           onChange={handelSearch}
-          className="w-full outline-none text-2xl text-slate-600 bg-slate-200 drag"
+          className="w-full outline-none text-2xl text-slate-600 bg-slate-200"
         ></input>
       </section>
       <section className="text-slate-600 text-center text-xs mt-2">dyc-test-snippets</section>
