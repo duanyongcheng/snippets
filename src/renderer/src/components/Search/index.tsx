@@ -1,20 +1,9 @@
-import { codes } from '@renderer/data'
-import useCode from '@renderer/hooks/useCode'
-import { ChangeEvent, useState } from 'react'
+import useSearch from '@renderer/hooks/useSearch'
 
 export default function Search(): JSX.Element {
-  const { setData } = useCode()
-  const [search, setSearch] = useState('')
-  const handelSearch = (e: ChangeEvent<HTMLInputElement>): void => {
-    setSearch(e.target.value)
-    if (e.target.value === undefined || e.target.value === '') setData([])
-    const searchData = codes.filter((code) =>
-      code.content.toLowerCase().includes(e.target.value.toLowerCase())
-    )
-    if (searchData !== undefined) setData(searchData)
-  }
+  const { search, handelSearch } = useSearch()
   return (
-    <main className="bg-slate-50 p-2 rounded-lg drag">
+    <main className="bg-slate-50 p-4 rounded-lg drag">
       <section className="bg-slate-200 p-3 rounded-lg drag">
         <input
           value={search}
