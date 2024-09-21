@@ -6,7 +6,7 @@ export function registerShortCut(win: BrowserWindow) {
   app.whenReady().then(() => {
     // 注册一个'CommandOrControl+X' 快捷键监听器
     const ret = globalShortcut.register('CommandOrControl+Shift+;', () => {
-      win.show()
+      win.isVisible() ? win.hide() : win.show()
     })
 
     if (!ret) {
