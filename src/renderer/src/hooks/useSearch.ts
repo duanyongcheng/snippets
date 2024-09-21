@@ -1,13 +1,11 @@
-import { ChangeEvent, useState } from 'react'
-import useCode from './useCode'
+import { ChangeEvent } from 'react'
 import { codes } from '@renderer/data'
+import { codeStore } from '@renderer/store/codeStore'
+import { searchStore } from '@renderer/store/searchStore'
 
-export default (): {
-  search: string
-  handelSearch: (e: ChangeEvent<HTMLInputElement>) => void
-} => {
-  const { setData } = useCode()
-  const [search, setSearch] = useState('')
+export default () => {
+  const { setData } = codeStore()
+  const { search, setSearch } = searchStore()
   const handelSearch = (e: ChangeEvent<HTMLInputElement>): void => {
     setSearch(e.target.value)
     if (e.target.value === undefined || e.target.value === '') setData([])
