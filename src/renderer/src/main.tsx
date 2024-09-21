@@ -5,7 +5,7 @@ import '@renderer/assets/tailwind.css'
 import '@renderer/assets/global.scss'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  // <React.StrictMode>
-  <App />
-  //</React.StrictMode>
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 )

@@ -1,10 +1,14 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
+import { CutConfig } from './index.d'
 
 // Custom APIs for renderer
 const api = {
   hideWindow: () => {
     ipcRenderer.send('hideWindow')
+  },
+  shortCut: (cutConfig: CutConfig) => {
+    ipcRenderer.send('shortCut', cutConfig)
   }
 }
 
