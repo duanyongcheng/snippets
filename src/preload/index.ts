@@ -8,7 +8,7 @@ const api = {
     ipcRenderer.send('hideWindow')
   },
   shortCut: (cutConfig: CutConfig) => {
-    ipcRenderer.send('shortCut', cutConfig)
+    return ipcRenderer.invoke('shortCut', cutConfig)
   }
 }
 
