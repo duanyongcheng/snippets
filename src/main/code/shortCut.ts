@@ -3,9 +3,16 @@ const { app, globalShortcut } = require('electron')
 interface Config {
   search: string
 }
+const config: Config = {
+  search: ''
+}
 
 export function registerShortCut(win: BrowserWindow) {
   ipcMain.handle('shortCut', (_event: IpcMainInvokeEvent, data: Config) => {
+    if (config.search) {
+      globalShortcut.unregister(config.search)
+    }
+    config.search = data.search
     return registerSearchShortCut(win, data.search)
   })
 }
