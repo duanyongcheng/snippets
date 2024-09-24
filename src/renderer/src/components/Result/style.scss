@@ -1,7 +1,7 @@
 .main {
-  @apply bg-slate-50 px-3 -mt-[12px] pb-2 rounded-lg;
+  @apply bg-slate-50 px-3 -mt-[7px] pb-2 rounded-lg;
   .item {
-    @apply text-slate-700 truncate px-2 py-1 rounded-lg text-sm cursor-pointer;
+    @apply text-slate-700 truncate px-2 py-1 rounded-lg text-sm;
     @apply hover:bg-orange-100 transition-colors duration-200 ease-in-out;
     &.active {
       @apply bg-orange-400 text-white;
