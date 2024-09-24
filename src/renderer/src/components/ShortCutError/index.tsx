@@ -1,4 +1,5 @@
 import { errorStore } from '@renderer/store/errorStore'
+import { Alert } from 'antd'
 import { useEffect } from 'react'
 
 function ShortCutError() {
@@ -11,9 +12,9 @@ function ShortCutError() {
   }, [error])
   if (error === '') return <></>
   return (
-    <div>
-      <h1 className="bg-red-700">{error}</h1>
-    </div>
+    <main className="absolute top-0 w-full z-10">
+      <Alert message={error} type="info" showIcon />
+    </main>
   )
 }
 
