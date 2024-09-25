@@ -7,7 +7,8 @@ import useMousePenetrate from './hooks/useMousePenetrate'
 
 function App(): JSX.Element {
   const { registerShortCut } = useShortCut()
-  registerShortCut({ search: 'CommandOrControl+Shift+;' })
+  registerShortCut('search', 'CommandOrControl+Shift+;')
+  // registerShortCut('config', 'CommandOrControl+,')
   const mainRef = useRef<HTMLMapElement>(null) // Declare and initialize the "mainRef" variable
   const { registerMouseEvent } = useMousePenetrate()
   useEffect(() => {

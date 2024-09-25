@@ -6,11 +6,10 @@ import icon from '../../../resources/icon.png?asset'
 export function createWindow(): BrowserWindow {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 600,
+    width: 800,
     height: 600,
+    center: true,
     show: false,
-    transparent: true,
-    frame: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
@@ -19,7 +18,7 @@ export function createWindow(): BrowserWindow {
     }
   })
 
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
   })

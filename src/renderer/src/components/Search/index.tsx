@@ -11,9 +11,9 @@ export default function Search(): JSX.Element {
           theme="outline"
           size="20"
           fill="#333"
-          className="drag"
+          className="nodrag"
           onClick={() => {
-            alert('Setting')
+            window.api.openConfigWindow()
           }}
         />
         <Input

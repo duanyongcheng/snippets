@@ -7,11 +7,15 @@ const api = {
   hideWindow: () => {
     ipcRenderer.send('hideWindow')
   },
-  shortCut: (cutConfig: CutConfig) => {
-    return ipcRenderer.invoke('shortCut', cutConfig)
+  shortCut: (type: string, shortCut) => {
+    return ipcRenderer.invoke('shortCut', type, shortCut)
   },
   setIgnoreMouseEvents: (ignore: boolean, options?: { forward: boolean }) => {
     ipcRenderer.send('setIgnoreMouseEvents', ignore, options)
+  },
+  // config window
+  openConfigWindow: () => {
+    ipcRenderer.send('openConfigWindow')
   }
 }
 

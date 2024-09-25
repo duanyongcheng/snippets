@@ -1,25 +1,45 @@
 import { BrowserWindow, IpcMainInvokeEvent, ipcMain } from 'electron'
+import { createConfigWindow } from '../config'
 const { app, globalShortcut } = require('electron')
-interface Config {
-  search: string
-}
-const config: Config = {
-  search: ''
+
+const config = {
+  search: '',
+  config: ''
 }
 
 export function registerShortCut(win: BrowserWindow) {
-  ipcMain.handle('shortCut', (_event: IpcMainInvokeEvent, data: Config) => {
-    if (config.search) {
-      globalShortcut.unregister(config.search)
+  ipcMain.handle(
+    'shortCut',
+    (_event: IpcMainInvokeEvent, type: string = 'search|config', shortCut: string) => {
+      switch (type) {
+        case 'search':
+          if (config.search) {
+            globalShortcut.unregister(config.search)
+          }
+          config.search = shortCut
+          return registerSearchShortCut(win, shortCut)
+        case 'config':
+          if (config.config) {
+            globalShortcut.unregister(config.config)
+          }
+          config.config = shortCut
+          return registerConfigShortCut(shortCut)
+        default:
+          return false
+      }
     }
-    config.search = data.search
-    return registerSearchShortCut(win, data.search)
-  })
+  )
 }
 
 function registerSearchShortCut(win: BrowserWindow, searchCout: string) {
   return globalShortcut.register(searchCout, () => {
     win.isVisible() ? win.hide() : win.show()
+  })
+}
+
+function registerConfigShortCut(searchCout: string) {
+  return globalShortcut.register(searchCout, () => {
+    createConfigWindow()
   })
 }
 
