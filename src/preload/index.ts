@@ -1,6 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
-import { CutConfig } from './index.d'
 
 // Custom APIs for renderer
 const api = {
@@ -16,6 +15,11 @@ const api = {
   // config window
   openConfigWindow: () => {
     ipcRenderer.send('openConfigWindow')
+  },
+
+  // sql
+  sql: (sql: string, type: SqlActionType) => {
+    return ipcRenderer.invoke('sql', sql, type)
   }
 }
 
