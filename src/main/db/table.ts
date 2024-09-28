@@ -1,4 +1,5 @@
 import { db } from './connects'
+import { Random } from 'mockjs'
 
 db.exec(`
     CREATE TABLE IF NOT EXISTS categories (
@@ -8,6 +9,11 @@ db.exec(`
         UNIQUE(name)
     )
 `)
+
+for (let i = 0; i < 10; i++) {
+  const name = Random.title(5, 10)
+  db.prepare('INSERT INTO categories (name) VALUES (?)').run(`${name}`)
+}
 
 db.exec(`
     CREATE TABLE IF NOT EXISTS snippets (

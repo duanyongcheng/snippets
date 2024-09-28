@@ -7,7 +7,16 @@
   div {
     &.categories {
       grid-area: categories;
-      @apply bg-slate-100 border-r;
+      @apply bg-slate-100 border-r overflow-y-auto block;
+      .item {
+        @apply flex items-center justify-between p-1 py-1 cursor-pointer truncate;
+        &.active {
+          @apply bg-slate-200;
+        }
+        &:hover {
+          @apply bg-orange-400;
+        }
+      }
     }
     &.content {
       grid-area: content;

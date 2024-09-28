@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react'
 import { codeStore } from '@renderer/store/codeStore'
 import { searchStore } from '@renderer/store/searchStore'
-import useQuery from './useQuery'
+import useQuery from './useQuerySnippets'
 
 export default () => {
   const { setData } = codeStore()
