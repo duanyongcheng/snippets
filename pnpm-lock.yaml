@@ -35,6 +35,9 @@ importers:
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.13
       electron-updater:
         specifier: ^6.1.7
         version: 6.3.4

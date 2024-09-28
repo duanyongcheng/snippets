@@ -1,14 +1,14 @@
 .container {
   @apply bg-white  text-xs text-slate-700;
   display: grid;
-  grid-template: 'list snippet' auto / 150px auto;
+  grid-template: 'list snippet' auto / 250px auto;
 }
 .list {
   grid-area: list;
   @apply border-r h-screen overflow-y-auto;
 }
 .item {
-  @apply flex items-center justify-between p-1 py-1 cursor-pointer truncate;
+  @apply p-1 py-1 cursor-pointer truncate flex items-center gap-1 border-b mx-2;
   &.active {
     @apply bg-blue-400 shadow-md transition-all duration-300 rounded-lg text-white;
   }

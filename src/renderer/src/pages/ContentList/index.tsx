@@ -2,6 +2,8 @@ import { NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
 import styles from './contentList.module.scss'
 import classNames from 'classnames'
 import { useEffect } from 'react'
+import dayjs from 'dayjs'
+import { format } from 'path'
 export default function ContentList() {
   const contentList = useLoaderData() as Snippets[]
   const navication = useNavigate()
@@ -24,7 +26,10 @@ export default function ContentList() {
                 return classNames([styles.item, { [styles.active]: isActive }])
               }}
             >
-              {content.title}
+              <div className="truncate"> {content.title}</div>
+              <div className="text-[10px] opacity-85">
+                {dayjs(content.created_at).format('YYYY/MM/DD')}
+              </div>
             </NavLink>
           ))
         ) : (

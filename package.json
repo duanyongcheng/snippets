@@ -30,6 +30,7 @@
     "antd": "^5.21.0",
     "better-sqlite3": "^11.3.0",
     "classnames": "^2.5.1",
+    "dayjs": "^1.11.13",
     "electron-updater": "^6.1.7",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
