@@ -1,12 +1,12 @@
 import { app } from 'electron'
-import { createWindow } from '../config/window'
 import { registerIpc } from './ipc'
 import { registerShortCut } from './shortCut'
 import ignoreMoustEvent from './ignoreMoustEvent'
+import { createWindow } from './window'
 
 app.whenReady().then(() => {
   const win = createWindow()
-  // registerIpc(win)
-  // registerShortCut(win)
-  // ignoreMoustEvent(win)
+  registerIpc(win)
+  registerShortCut(win)
+  ignoreMoustEvent(win)
 })

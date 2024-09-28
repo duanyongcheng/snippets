@@ -1,38 +1,35 @@
-.category {
+.container {
   @apply w-screen h-screen text-xs text-slate-700;
   display: grid;
   grid-template:
     'categories content' auto
-    'nav content' 40px/100px auto;
-  div {
-    &.categories {
-      grid-area: categories;
-      @apply bg-slate-100 border-r overflow-y-auto block;
-      .item {
-        @apply flex items-center justify-between p-1 py-1 cursor-pointer truncate;
-        &.active {
-          @apply bg-blue-400 shadow-md transition-all duration-300 rounded-lg text-white;
-        }
-        &:hover {
-          @apply bg-orange-400 shadow-md transition-all duration-300 rounded-lg text-white;
-        }
-      }
+    'nav content' 40px/100px auto 1fr;
+}
+.categories {
+  grid-area: categories;
+  @apply bg-slate-100 border-r overflow-y-auto block;
+  .item {
+    @apply flex items-center justify-between p-1 py-1 cursor-pointer truncate;
+    &.active {
+      @apply bg-blue-400 shadow-md transition-all duration-300 rounded-lg text-white;
     }
-    &.content {
-      grid-area: content;
+    &:hover {
+      @apply bg-orange-400 shadow-md transition-all duration-300 rounded-lg text-white;
     }
-    &.nav {
-      grid-area: nav;
-      display: grid;
-      grid-template-columns: 1fr 1fr; // 两列等宽
-      @apply bg-slate-100 border-t border-r;
+  }
+}
+.content {
+  grid-area: content;
+  @apply bg-purple-500;
+}
+.nav {
+  grid-area: nav;
+  @apply bg-slate-100 border-t border-r;
 
-      .iconWrapper {
-        @apply flex items-center justify-center;
-        &:first-child {
-          @apply border-r;
-        }
-      }
+  .iconWrapper {
+    @apply flex items-center justify-center;
+    &:first-child {
+      @apply border-r;
     }
   }
 }

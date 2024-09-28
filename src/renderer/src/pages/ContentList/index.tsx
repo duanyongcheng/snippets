@@ -1,10 +1,18 @@
-import { NavLink, Outlet, useLoaderData } from 'react-router-dom'
+import { NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
 import styles from './contentList.module.scss'
 import classNames from 'classnames'
+import { useEffect } from 'react'
 export default function ContentList() {
   const contentList = useLoaderData() as Snippets[]
+  const navication = useNavigate()
+  useEffect(() => {
+    if (contentList.length === 0) return
+    navication(
+      `/config/category/contentList/${contentList[0].category_id}/content/${contentList[0].id}`
+    )
+  }, [contentList])
   return (
-    <main className={styles.content}>
+    <main className={styles.container}>
       <div className={styles.list}>
         {contentList.length !== 0 ? (
           contentList.map((content) => (
@@ -22,7 +30,7 @@ export default function ContentList() {
           <div>暂无内容</div>
         )}
       </div>
-      <div>
+      <div className={styles.snippet}>
         <Outlet></Outlet>
       </div>
     </main>

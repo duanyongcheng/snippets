@@ -12,7 +12,7 @@ export default function Category() {
     navication('/config/category/contentList/' + categories[0].id)
   }, [categories])
   return (
-    <main className={classNames([styles.category, 'container'])}>
+    <main className={styles.container}>
       <div className={styles.categories}>
         {categories.map((category) => (
           <NavLink

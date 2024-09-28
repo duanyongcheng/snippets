@@ -9,9 +9,9 @@ export function createWindow(): BrowserWindow {
   const mainWindow = new BrowserWindow({
     width: 1250,
     height: 750,
-    show: false,
-    transparent: false,
-    frame: true,
+    // show: false,
+    // transparent: false,
+    // frame: true,
     // alwaysOnTop: true,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
