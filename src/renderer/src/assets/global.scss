@@ -15,3 +15,7 @@ textarea,
 option {
   -webkit-app-region: no-drag;
 }
+
+.container {
+  @apply w-full h-full;
+}

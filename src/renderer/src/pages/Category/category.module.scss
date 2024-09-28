@@ -1,0 +1,29 @@
+.category {
+  @apply w-screen h-screen text-xs text-slate-700;
+  display: grid;
+  grid-template:
+    'categories content' auto
+    'nav content' 40px/100px auto;
+  div {
+    &.categories {
+      grid-area: categories;
+      @apply bg-slate-100 border-r;
+    }
+    &.content {
+      grid-area: content;
+    }
+    &.nav {
+      grid-area: nav;
+      display: grid;
+      grid-template-columns: 1fr 1fr; // 两列等宽
+      @apply bg-slate-100 border-t border-r;
+
+      .iconWrapper {
+        @apply flex items-center justify-center;
+        &:first-child {
+          @apply border-r;
+        }
+      }
+    }
+  }
+}

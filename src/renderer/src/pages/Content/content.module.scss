@@ -1,0 +1,14 @@
+.content {
+  @apply w-screen h-screen bg-white  text-xs text-slate-700;
+  display: grid;
+  grid-template: 'list content' auto / 150px auto;
+  div {
+    &.list {
+      grid-area: list;
+      @apply bg-slate-50 border-r;
+    }
+    &.content {
+      grid-area: content;
+    }
+  }
+}

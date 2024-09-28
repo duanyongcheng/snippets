@@ -7,10 +7,12 @@ import url from 'node:url'
 export function createWindow(): BrowserWindow {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    center: true,
+    width: 1250,
+    height: 750,
     show: false,
+    transparent: false,
+    frame: true,
+    // alwaysOnTop: true,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {

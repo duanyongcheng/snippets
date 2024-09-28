@@ -11,7 +11,7 @@ export function createWindow(): BrowserWindow {
     show: false,
     transparent: true,
     frame: false,
-    alwaysOnTop: true,
+    // alwaysOnTop: true,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
@@ -20,7 +20,7 @@ export function createWindow(): BrowserWindow {
     }
   })
 
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
   })

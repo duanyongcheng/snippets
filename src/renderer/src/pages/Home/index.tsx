@@ -1,11 +1,11 @@
-import Search from './components/Search'
-import Result from './components/Result' // Import the Result component
-import useShortCut from './hooks/useShortCut'
-import ShortCutError from './components/ShortCutError'
+import Search from '@renderer/components/Search'
+import Result from '@renderer/components/Result' // Import the Result component
+import useShortCut from '@renderer/hooks/useShortCut'
+import ShortCutError from '@renderer/components/ShortCutError'
 import { MutableRefObject, useEffect, useRef } from 'react'
-import useMousePenetrate from './hooks/useMousePenetrate'
+import useMousePenetrate from '@renderer/hooks/useMousePenetrate'
 
-function App(): JSX.Element {
+function Home(): JSX.Element {
   const { registerShortCut } = useShortCut()
   registerShortCut('search', 'CommandOrControl+Shift+;')
   // registerShortCut('config', 'CommandOrControl+,')
@@ -13,6 +13,7 @@ function App(): JSX.Element {
   const { registerMouseEvent } = useMousePenetrate()
   useEffect(() => {
     registerMouseEvent(mainRef as MutableRefObject<HTMLElement>)
+    window.api.openConfigWindow()
   }, [])
   return (
     <main className="relative p-0.5" ref={mainRef}>
@@ -23,4 +24,4 @@ function App(): JSX.Element {
   )
 }
 
-export default App
+export default Home
