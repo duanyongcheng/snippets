@@ -6,25 +6,33 @@ export default function ContentList() {
   const contentList = useLoaderData() as Snippets[]
   const [currentContent, setCurrentContent] = useState<Snippets>()
   useEffect(() => {
-    setCurrentContent(contentList[0])
+    if (contentList.length !== 0) {
+      setCurrentContent(contentList[0])
+    } else {
+      setCurrentContent(undefined)
+    }
   }, [contentList])
   return (
     <main className={styles.content}>
       <div className={styles.list}>
-        {contentList.map((content) => (
-          <div
-            key={content.id}
-            className={classNames([
-              styles.item,
-              { [styles.active]: currentContent?.id === content.id }
-            ])}
-            onClick={() => {
-              setCurrentContent(content)
-            }}
-          >
-            {content.title}
-          </div>
-        ))}
+        {contentList.length !== 0 ? (
+          contentList.map((content) => (
+            <div
+              key={content.id}
+              className={classNames([
+                styles.item,
+                { [styles.active]: currentContent?.id === content.id }
+              ])}
+              onClick={() => {
+                setCurrentContent(content)
+              }}
+            >
+              {content.title}
+            </div>
+          ))
+        ) : (
+          <div>暂无内容</div>
+        )}
       </div>
       <div className={styles.content}>
         {currentContent ? (
