@@ -1,10 +1,10 @@
 .container {
   @apply p-3;
-}
-.title {
-  @apply text-base font-bold text-slate-600 opacity-95;
-}
+  .title {
+    @apply text-base font-bold text-slate-600 opacity-95;
+  }
 
-.content {
-  @apply text-sm leading-relaxed text-slate-500;
+  .content {
+    @apply text-sm leading-relaxed text-slate-500;
+  }
 }

@@ -1,11 +1,11 @@
 .container {
-  @apply bg-white  text-xs text-slate-700 h-screen;
+  @apply bg-white  text-xs text-slate-700;
   display: grid;
   grid-template: 'list snippet' auto / 150px auto;
 }
 .list {
   grid-area: list;
-  @apply bg-red-600 border-r overflow-y-auto;
+  @apply border-r h-screen overflow-y-auto;
 }
 .item {
   @apply flex items-center justify-between p-1 py-1 cursor-pointer truncate;
@@ -19,5 +19,4 @@
 
 .snippet {
   grid-area: snippet;
-  @apply bg-green-600;
 }

@@ -20,11 +20,10 @@
 }
 .content {
   grid-area: content;
-  @apply bg-purple-500;
 }
 .nav {
   grid-area: nav;
-  @apply bg-slate-100 border-t border-r;
+  @apply bg-slate-100 border-t border-r flex;
 
   .iconWrapper {
     @apply flex items-center justify-center;

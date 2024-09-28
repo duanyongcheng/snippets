@@ -6,10 +6,11 @@ export default function ContentList() {
   const contentList = useLoaderData() as Snippets[]
   const navication = useNavigate()
   useEffect(() => {
-    if (contentList.length === 0) return
-    navication(
-      `/config/category/contentList/${contentList[0].category_id}/content/${contentList[0].id}`
-    )
+    if (contentList.length !== 0) {
+      navication(
+        `/config/category/contentList/${contentList[0].category_id}/content/${contentList[0].id}`
+      )
+    }
   }, [contentList])
   return (
     <main className={styles.container}>
