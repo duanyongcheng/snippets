@@ -1,10 +1,17 @@
 .container {
-  @apply p-3;
+  @apply p-3 h-screen;
+  display: grid;
+  grid-template-rows: 30px 1fr 40px;
   .title {
-    @apply text-base font-bold text-slate-600 opacity-95;
+    @apply text-base font-bold text-slate-600 opacity-95 outline-none;
   }
 
   .content {
-    @apply text-sm leading-relaxed text-slate-500;
+    @apply text-sm leading-relaxed text-slate-500 outline-none flex-1;
+  }
+
+  .save {
+    display: flex;
+    @apply border-t flex-row items-center justify-center;
   }
 }
