@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useLoaderData, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
 import styles from './contentList.module.scss'
 import classNames from 'classnames'
 import { useEffect } from 'react'
@@ -6,16 +6,10 @@ import dayjs from 'dayjs'
 export default function ContentList() {
   const contentList = useLoaderData() as Snippets[]
   const navication = useNavigate()
-  const location = useLocation()
   useEffect(() => {
     if (contentList.length !== 0) {
       const path = `/config/category/contentList/${contentList[0].category_id}/content/${contentList[0].id}`
-      console.info(location.pathname, path)
-      if (
-        path.search(location.pathname) !== -1 ||
-        location.pathname === '/config/category/contentList'
-      )
-        navication(path)
+      navication(path)
     }
   }, [contentList])
   return (

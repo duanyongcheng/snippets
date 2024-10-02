@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useLoaderData, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
 import styles from './category.module.scss'
 import classNames from 'classnames'
 import { Add, SettingConfig } from '@icon-park/react'
@@ -7,15 +7,8 @@ import { useEffect } from 'react'
 export default function Category() {
   const categories = useLoaderData() as Category[]
   const navigation = useNavigate()
-  const location = useLocation()
   useEffect(() => {
     const path = `/config/category/contentList/${categories[0].id}`
-    console.info('category', location.pathname, path)
-    if (
-      path.search(location.pathname) !== -1 ||
-      location.pathname === '/config/category/contentList'
-    )
-      return
     navigation(path)
   }, [categories])
   return (
