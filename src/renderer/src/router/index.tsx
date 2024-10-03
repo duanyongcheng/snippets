@@ -31,7 +31,7 @@ const router = createHashRouter([
               {
                 path: 'content/:id',
                 loader: ContentLoader,
-                // action: ContentAction,
+                action: ContentAction,
                 element: <Content />
               }
             ]

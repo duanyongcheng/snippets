@@ -1,15 +1,32 @@
 import { NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
 import styles from './contentList.module.scss'
 import classNames from 'classnames'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import dayjs from 'dayjs'
 export default function ContentList() {
   const contentList = useLoaderData() as Snippets[]
-  const navication = useNavigate()
+  const navigate = useNavigate()
+  const navigateToContent = useCallback(
+    (categoryId: number, contentId: number) => {
+      console.log('this is contentList')
+      console.log('categoryId', categoryId)
+      console.log('contentId', contentId)
+      if (!contentId) {
+        return
+      }
+      const path = bulidPath(categoryId, contentId)
+      if (path.search(location.pathname) === -1) {
+        navigate(path)
+      }
+    },
+    [navigate, location]
+  )
+  const bulidPath = (categoryId: number, contentId: number) => {
+    return `/config/category/contentList/${categoryId}/content/${contentId}`
+  }
   useEffect(() => {
     if (contentList.length !== 0) {
-      const path = `/config/category/contentList/${contentList[0].category_id}/content/${contentList[0].id}`
-      navication(path)
+      navigateToContent(contentList[0].category_id, contentList[0].id)
     }
   }, [contentList])
   return (
@@ -20,6 +37,7 @@ export default function ContentList() {
             <NavLink
               to={`/config/category/contentList/${content.category_id}/content/${content.id}`}
               key={content.id}
+              end
               className={({ isActive }) => {
                 return classNames([styles.item, { [styles.active]: isActive }])
               }}
