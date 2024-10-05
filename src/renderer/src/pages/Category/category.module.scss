@@ -3,7 +3,7 @@
   display: grid;
   grid-template:
     'categories content' auto
-    'nav content' 40px/100px 1fr;
+    'nav content' 40px/150px 1fr;
 }
 .categories {
   grid-area: categories;

@@ -25,14 +25,14 @@ const router = createHashRouter([
         element: <Category />,
         children: [
           {
-            index: true,
-            element: <Welcome />
-          },
-          {
-            path: 'contentList/:cid',
+            path: 'contentList/:cid?',
             loader: ContentListLoader,
             element: <ContentList></ContentList>,
             children: [
+              {
+                index: true,
+                element: <Welcome />
+              },
               {
                 path: 'content/:id',
                 loader: ContentLoader,

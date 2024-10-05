@@ -1,4 +1,10 @@
 export default async ({ params }) => {
   const cid = params.cid
-  return window.api.sql(`SELECT * FROM snippets WHERE category_id = '${cid}'`, 'find')
+  console.log('cid', cid)
+  let sql = 'SELECT * FROM snippets'
+  if (cid) {
+    sql += ` WHERE category_id = ${cid}`
+  }
+  sql += ' ORDER BY id DESC'
+  return window.api.sql(sql, 'find')
 }

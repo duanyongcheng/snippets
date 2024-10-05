@@ -1,21 +1,26 @@
-import { NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
+import { NavLink, Outlet, useLoaderData } from 'react-router-dom'
 import styles from './category.module.scss'
 import classNames from 'classnames'
-import { Add, SettingConfig } from '@icon-park/react'
-import { useEffect } from 'react'
+import { Add, AllApplication, FolderClose, SettingConfig } from '@icon-park/react'
 
 export default function Category() {
   const categories = useLoaderData() as Category[]
-  // const navigation = useNavigate()
-  // useEffect(() => {
-  //   console.log('this is category')
-  //   const path = `/config/category/contentList/${categories[0].id}`
-  //   console.log('path', path)
-  //   navigation(path)
-  // }, [categories])
   return (
     <main className={styles.container}>
       <div className={styles.categories}>
+        <div className="px-2 mt-2 mb-1">快捷操作</div>
+        <NavLink
+          to={`/config/category/contentList`}
+          end
+          className={({ isActive }) => {
+            return classNames(['font-bold mb-1 ml-1', styles.item, { [styles.active]: isActive }])
+          }}
+        >
+          <div className="flex flex-row items-center">
+            <AllApplication theme="outline" size="12" strokeWidth={3} />
+            <div className="ml-1">所有片段</div>
+          </div>
+        </NavLink>
         {categories.map((category) => (
           <NavLink
             to={`/config/category/contentList/${category.id}`}
@@ -24,7 +29,10 @@ export default function Category() {
               return classNames([styles.item, { [styles.active]: isActive }])
             }}
           >
-            {category.name}
+            <div className="flex flex-row items-center">
+              <FolderClose theme="outline" size="12" strokeWidth={3} />
+              <div className="ml-1">{category.name}</div>
+            </div>
           </NavLink>
         ))}
       </div>

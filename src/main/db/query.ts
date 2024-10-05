@@ -1,7 +1,6 @@
 import { db } from './connects'
 
 const find = (sql: string) => {
-  console.log('main sql {}', sql)
   return db.prepare(sql).all()
 }
 
@@ -14,7 +13,6 @@ const insert = (sql: string) => {
 }
 
 const update = (sql: string, params: Record<string, string | number>) => {
-  console.log('main sql {}', sql, params)
   return db.prepare(sql).run(params).changes
 }
 
