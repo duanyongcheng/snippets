@@ -15,7 +15,12 @@ export default function ContentList() {
         return
       }
       const path = bulidPath(categoryId, contentId)
-      if (path.search(location.pathname) === -1) {
+      console.log('content path', path)
+      console.log('content location.pathname', location.pathname)
+      if (location.pathname === '/') {
+        navigate(path)
+      } else if (path.search(location.pathname) === -1) {
+        console.log('content navigate location.pathname', location.pathname)
         navigate(path)
       }
     },
