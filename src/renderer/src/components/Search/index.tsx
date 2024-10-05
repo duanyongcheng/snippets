@@ -11,7 +11,7 @@ export default function Search(): JSX.Element {
           theme="outline"
           size="20"
           fill="#333"
-          className="nodrag"
+          className="nodrag mr-1"
           onClick={() => {
             window.api.openConfigWindow()
           }}
@@ -20,7 +20,7 @@ export default function Search(): JSX.Element {
           value={search}
           onChange={handelSearch}
           autoFocus
-          // className="w-full outline-none text-2xl text-slate-600 bg-slate-200"
+          className="w-full outline-none text-2xl text-slate-600 bg-slate-200"
         ></Input>
       </section>
       <section className="text-slate-600 text-center text-xs mt-2">dyc-test-snippets</section>
