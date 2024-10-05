@@ -13,8 +13,9 @@ const insert = (sql: string) => {
   return db.prepare(sql).run()
 }
 
-const update = (sql: string) => {
-  return db.prepare(sql).run()
+const update = (sql: string, params: Record<string, string | number>) => {
+  console.log('main sql {}', sql, params)
+  return db.prepare(sql).run(params).changes
 }
 
 const remove = (sql: string) => {

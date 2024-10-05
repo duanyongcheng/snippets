@@ -9,9 +9,12 @@ export default () => {
   const { find } = useQuery()
   const handelSearch = (e: ChangeEvent<HTMLInputElement>): void => {
     setSearch(e.target.value)
-    if (e.target.value === undefined || e.target.value === '') setData([])
+    if (e.target.value === undefined || e.target.value === '') {
+      setData([])
+      return
+    }
     const searchKey = e.target.value
-    const sql = `SELECT * FROM snippets WHERE title LIKE '%${searchKey}%'`
+    const sql = `SELECT * FROM snippets WHERE title LIKE '%${searchKey}%' or content LIKE '%${searchKey}%'`
     console.log(sql)
     find(sql).then((data: Snippets[]) => {
       console.log(data)

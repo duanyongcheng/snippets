@@ -9,6 +9,14 @@ export default () => {
       setIgnoreMouseEvents(false)
     })
     document.body?.addEventListener('mouseout', (e: MouseEvent) => {
+      console.log('mouseout', e.target)
+      if (e.target === document.body) {
+        console.info(e.target)
+        setIgnoreMouseEvents(false)
+      }
+    })
+    document.body?.addEventListener('mouseover', (e: MouseEvent) => {
+      console.log('mouseout', e.target)
       if (e.target === document.body) {
         console.info(e.target)
         setIgnoreMouseEvents(true, { forward: true })

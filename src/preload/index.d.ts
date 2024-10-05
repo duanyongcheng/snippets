@@ -8,7 +8,8 @@ declare global {
       shortCut: (type: string, searchCout: string) => Promise<boolean>
       setIgnoreMouseEvents: (ignore: boolean, options?: { forward: boolean }) => void
       openConfigWindow: () => void
-      sql: <T>(sql: string, type: SqlActionType) => Promise<T>
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      sql: <T>(sql: string, type: SqlActionType, params?: Record<string, any>) => Promise<T>
     }
   }
 }
