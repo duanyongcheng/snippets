@@ -18,8 +18,10 @@ const api = {
   },
 
   // sql
-  sql: (sql: string, type: SqlActionType) => {
-    return ipcRenderer.invoke('sql', sql, type)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  sql: (sql: string, type: SqlActionType, params?: Record<string, any>) => {
+    console.info('sql', sql, type, params)
+    return ipcRenderer.invoke('sql', sql, type, params)
   }
 }
 

@@ -8,6 +8,7 @@ module.exports = {
   ],
   rules: {
     // ... 其他规则
-    '@typescript-eslint/explicit-function-return-type': 'off'
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-explicit-any': 'off'
   }
 }
