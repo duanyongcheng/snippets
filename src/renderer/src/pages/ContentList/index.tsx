@@ -5,35 +5,35 @@ import { useCallback, useEffect } from 'react'
 import dayjs from 'dayjs'
 export default function ContentList() {
   const contentList = useLoaderData() as Snippets[]
-  const navigate = useNavigate()
-  const navigateToContent = useCallback(
-    (categoryId: number, contentId: number) => {
-      console.log('this is contentList')
-      console.log('categoryId', categoryId)
-      console.log('contentId', contentId)
-      if (!contentId) {
-        return
-      }
-      const path = bulidPath(categoryId, contentId)
-      console.log('content path', path)
-      console.log('content location.pathname', location.pathname)
-      if (location.pathname === '/') {
-        navigate(path)
-      } else if (path.search(location.pathname) === -1) {
-        console.log('content navigate location.pathname', location.pathname)
-        navigate(path)
-      }
-    },
-    [navigate, location]
-  )
-  const bulidPath = (categoryId: number, contentId: number) => {
-    return `/config/category/contentList/${categoryId}/content/${contentId}`
-  }
-  useEffect(() => {
-    if (contentList.length !== 0) {
-      navigateToContent(contentList[0].category_id, contentList[0].id)
-    }
-  }, [contentList])
+  // const navigate = useNavigate()
+  // const navigateToContent = useCallback(
+  //   (categoryId: number, contentId: number) => {
+  //     console.log('this is contentList')
+  //     console.log('categoryId', categoryId)
+  //     console.log('contentId', contentId)
+  //     if (!contentId) {
+  //       return
+  //     }
+  //     const path = bulidPath(categoryId, contentId)
+  //     console.log('content path', path)
+  //     console.log('content location.pathname', location.pathname)
+  //     if (location.pathname === '/') {
+  //       navigate(path)
+  //     } else if (path.search(location.pathname) === -1) {
+  //       console.log('content navigate location.pathname', location.pathname)
+  //       navigate(path)
+  //     }
+  //   },
+  //   [navigate, location]
+  // )
+  // const bulidPath = (categoryId: number, contentId: number) => {
+  //   return `/config/category/contentList/${categoryId}/content/${contentId}`
+  // }
+  // useEffect(() => {
+  //   if (contentList.length !== 0) {
+  //     navigateToContent(contentList[0].category_id, contentList[0].id)
+  //   }
+  // }, [contentList])
   return (
     <main className={styles.container}>
       <div className={styles.list}>

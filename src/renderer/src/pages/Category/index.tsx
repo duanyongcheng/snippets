@@ -6,13 +6,13 @@ import { useEffect } from 'react'
 
 export default function Category() {
   const categories = useLoaderData() as Category[]
-  const navigation = useNavigate()
-  useEffect(() => {
-    console.log('this is category')
-    const path = `/config/category/contentList/${categories[0].id}`
-    console.log('path', path)
-    navigation(path)
-  }, [categories])
+  // const navigation = useNavigate()
+  // useEffect(() => {
+  //   console.log('this is category')
+  //   const path = `/config/category/contentList/${categories[0].id}`
+  //   console.log('path', path)
+  //   navigation(path)
+  // }, [categories])
   return (
     <main className={styles.container}>
       <div className={styles.categories}>
