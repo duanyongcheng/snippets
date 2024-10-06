@@ -2,6 +2,9 @@
   display: flex;
   @apply bg-white  text-xs text-slate-700 flex-row;
 }
+.search {
+  @apply outline-none text-sm font-bold px-3 py-2 border-b w-full;
+}
 .list {
   @apply border-r h-screen overflow-y-auto w-[250px];
 }

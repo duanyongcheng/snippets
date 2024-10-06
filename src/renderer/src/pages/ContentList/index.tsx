@@ -1,12 +1,24 @@
-import { NavLink, Outlet, useLoaderData } from 'react-router-dom'
+import { Form, NavLink, Outlet, useLoaderData, useSubmit } from 'react-router-dom'
 import styles from './contentList.module.scss'
 import classNames from 'classnames'
 import dayjs from 'dayjs'
 export default function ContentList() {
   const contentList = useLoaderData() as Snippets[]
+  const submit = useSubmit()
   return (
     <main className={styles.container}>
       <div className={styles.list}>
+        <Form>
+          <input
+            name="searchKey"
+            type="text"
+            className={styles.search}
+            placeholder="搜索..."
+            onChange={(e) => {
+              submit(e.target.form)
+            }}
+          ></input>
+        </Form>
         {contentList.length !== 0 ? (
           contentList.map((content) => (
             <NavLink
