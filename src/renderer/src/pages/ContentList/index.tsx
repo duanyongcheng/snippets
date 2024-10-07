@@ -2,6 +2,7 @@ import { Form, NavLink, Outlet, useLoaderData, useSubmit } from 'react-router-do
 import styles from './contentList.module.scss'
 import classNames from 'classnames'
 import dayjs from 'dayjs'
+import { Add } from '@icon-park/react'
 export default function ContentList() {
   const contentList = useLoaderData() as Snippets[]
   const submit = useSubmit()
@@ -9,15 +10,23 @@ export default function ContentList() {
     <main className={styles.container}>
       <div className={styles.list}>
         <Form>
-          <input
-            name="searchKey"
-            type="text"
-            className={styles.search}
-            placeholder="搜索..."
-            onChange={(e) => {
-              submit(e.target.form)
-            }}
-          ></input>
+          <div className={styles.search}>
+            <input
+              name="searchKey"
+              type="text"
+              placeholder="搜索..."
+              onChange={(e) => {
+                submit(e.target.form)
+              }}
+            ></input>
+            <Add
+              theme="outline"
+              size="18"
+              fill="#000000"
+              strokeWidth={2}
+              className="opacity-85"
+            ></Add>
+          </div>
         </Form>
         {contentList.length !== 0 ? (
           contentList.map((content) => (
