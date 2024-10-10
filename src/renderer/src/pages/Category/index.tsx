@@ -13,12 +13,34 @@ export default function Category() {
           to={`/config/category/contentList`}
           end
           className={({ isActive }) => {
-            return classNames(['font-bold mb-1 ml-1', styles.item, { [styles.active]: isActive }])
+            return classNames([
+              'font-bold mb-1 ml-1',
+              styles.item,
+              { [styles.active]: isActive },
+              { 'ml-2': isActive }
+            ])
           }}
         >
           <div className="flex flex-row items-center">
             <AllApplication theme="outline" size="12" strokeWidth={3} />
             <div className="ml-1">所有片段</div>
+          </div>
+        </NavLink>
+        <NavLink
+          to={`/config/category/contentList/0`}
+          end
+          className={({ isActive }) => {
+            return classNames([
+              'font-bold mb-1 ml-1',
+              styles.item,
+              { [styles.active]: isActive },
+              { 'ml-2': isActive }
+            ])
+          }}
+        >
+          <div className="flex flex-row items-center">
+            <AllApplication theme="outline" size="12" strokeWidth={3} />
+            <div className="ml-1">未分类</div>
           </div>
         </NavLink>
         {categories.map((category) => (
