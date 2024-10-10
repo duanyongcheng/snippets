@@ -15,6 +15,7 @@ export default function Content() {
           placeholder="请输入title"
           className={classNames([styles.title, 'outline-none'])}
           defaultValue={snippet.title}
+          autoFocus
           onChange={(e) => {
             submit(e.target.form)
           }}

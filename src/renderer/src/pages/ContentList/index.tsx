@@ -25,6 +25,9 @@ export default function ContentList() {
               fill="#000000"
               strokeWidth={2}
               className="opacity-85"
+              onClick={() => {
+                submit({ action: 'add' }, { method: 'post' })
+              }}
             ></Add>
           </div>
         </Form>

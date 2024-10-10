@@ -9,7 +9,7 @@ const findOne = (sql: string) => {
 }
 
 const insert = (sql: string) => {
-  return db.prepare(sql).run()
+  return db.prepare(sql).run().lastInsertRowid
 }
 
 const update = (sql: string, params: Record<string, string | number>) => {

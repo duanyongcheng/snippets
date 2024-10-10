@@ -28,6 +28,7 @@ const router = createHashRouter([
           {
             path: 'contentList/:cid?',
             loader: ContentListLoader,
+            action: ContentListAction,
             element: <ContentList></ContentList>,
             children: [
               {
