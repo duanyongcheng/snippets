@@ -8,15 +8,6 @@
 .categories {
   grid-area: categories;
   @apply bg-slate-100 border-r overflow-y-auto block;
-  .item {
-    @apply flex items-center justify-between p-1 py-1 cursor-pointer truncate;
-    &.active {
-      @apply bg-blue-400 shadow-md transition-all duration-300 rounded-lg text-white;
-    }
-    &:hover {
-      @apply bg-orange-400 shadow-md transition-all duration-300 rounded-lg text-white;
-    }
-  }
 }
 .content {
   grid-area: content;
