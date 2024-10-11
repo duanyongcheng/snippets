@@ -8,7 +8,7 @@ export default async ({ params, request }) => {
     sql += ` WHERE title LIKE @searchKey or content LIKE @searchKey`
     return window.api.sql(sql, 'find', { searchKey: `%${searchKey}%` })
   }
-  if (cid) {
+  if (cid !== undefined) {
     sql += ` WHERE category_id = ${cid}`
   }
   sql += ' ORDER BY id DESC'
