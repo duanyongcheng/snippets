@@ -1,3 +1,12 @@
+@mixin common {
+  &.active {
+    @apply bg-blue-400 shadow-md transition-all duration-300 rounded-lg text-white;
+  }
+  &:hover {
+    @apply bg-orange-400 shadow-md transition-all duration-300 rounded-lg text-white;
+  }
+}
+
 .container {
   display: flex;
   @apply bg-white  text-xs text-slate-700 flex-row;
@@ -9,13 +18,8 @@
   @apply border-r h-screen overflow-y-auto w-[250px];
 }
 .item {
-  @apply p-1 py-1 cursor-pointer truncate flex items-center gap-1 border-b mx-2;
-  &.active {
-    @apply bg-blue-400 shadow-md transition-all duration-300 rounded-lg text-white;
-  }
-  &:hover {
-    @apply bg-orange-400 shadow-md transition-all duration-300 rounded-lg text-white;
-  }
+  @include common();
+  @apply p-1 py-1 cursor-pointer truncate flex items-center justify-between gap-1 border-b mx-2;
 }
 
 .snippet {

@@ -15,7 +15,15 @@ textarea,
 option {
   -webkit-app-region: no-drag;
 }
-
 .container {
   @apply w-full h-full;
+}
+.contextMenu {
+  @apply rounded-md;
+  button {
+    @apply bg-[#2c3150] text-white py-1 hover:bg-[#34495e];
+    & > div {
+      @apply mx-3;
+    }
+  }
 }

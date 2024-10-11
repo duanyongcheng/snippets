@@ -1,12 +1,16 @@
 .container {
   @apply p-3 h-screen;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: 50px 30px 1fr;
   .title {
     @apply text-base font-bold text-slate-600 opacity-95;
   }
 
   .content {
     @apply text-sm leading-relaxed text-slate-500 flex-1 border-t mt-2 outline-none;
+  }
+
+  .select {
+    @apply text-sm text-slate-500 outline-none;
   }
 }

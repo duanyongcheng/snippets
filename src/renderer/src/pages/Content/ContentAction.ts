@@ -1,15 +1,14 @@
+import { redirect } from 'react-router-dom'
+
 export default async ({ request }) => {
   const data = await request.formData()
-  const snippet: Snippets = {} as Snippets // Remove the unnecessary instantiation
-  snippet.title = data.get('title')
-  snippet.content = data.get('content')
-  snippet.id = data.get('id')
-  console.info('snippet', snippet)
+  const snippet: Snippets = Object.fromEntries(data) as Snippets // Remove the unnecessary instantiation
+
   // update in sqlite
   window.api.sql(
-    'UPDATE snippets SET title = @title, content = @content WHERE id = @id',
+    'UPDATE snippets SET title = @title, content = @content, category_id = @category_id WHERE id = @id',
     'update',
     snippet
   )
-  return ''
+  return redirect(`/config/category/contentList/${snippet.category_id}/content/${snippet.id}`)
 }

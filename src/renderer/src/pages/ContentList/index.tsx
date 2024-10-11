@@ -2,10 +2,12 @@ import { Form, NavLink, Outlet, useLoaderData, useSubmit } from 'react-router-do
 import styles from './contentList.module.scss'
 import classNames from 'classnames'
 import dayjs from 'dayjs'
-import { Add } from '@icon-park/react'
+import { Add, Delete } from '@icon-park/react'
+import { useContextMenu } from 'mantine-contextmenu'
 export default function ContentList() {
   const contentList = useLoaderData() as Snippets[]
   const submit = useSubmit()
+  const { showContextMenu } = useContextMenu()
   return (
     <main className={styles.container}>
       <div className={styles.list}>
@@ -40,10 +42,25 @@ export default function ContentList() {
               className={({ isActive }) => {
                 return classNames([styles.item, { [styles.active]: isActive }])
               }}
+              onContextMenu={showContextMenu(
+                [
+                  {
+                    key: 'remove',
+                    icon: <Delete theme="outline" size="18" strokeWidth={3} />,
+                    title: 'Delete Snippets',
+                    onClick: () => {
+                      submit({ action: 'delete', id: content.id }, { method: 'delete' })
+                    }
+                  }
+                ],
+                {
+                  className: 'contextMenu'
+                }
+              )}
             >
               <div className="truncate"> {content.title}</div>
               <div className="text-[10px] opacity-85">
-                {dayjs(content.created_at).format('YYYY/MM/DD')}
+                {dayjs(content.created_at).format('YY/MM/DD')}
               </div>
             </NavLink>
           ))

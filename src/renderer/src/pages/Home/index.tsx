@@ -13,7 +13,7 @@ function Home(): JSX.Element {
   const { registerMouseEvent } = useMousePenetrate()
   useEffect(() => {
     registerMouseEvent(mainRef as MutableRefObject<HTMLElement>)
-    // window.api.openConfigWindow()
+    window.api.openConfigWindow()
   }, [])
   return (
     <main className="relative p-0.5" ref={mainRef}>
