@@ -25,7 +25,7 @@ export default function Content() {
             submit(e.target.form)
           }}
         />
-        <select
+        {/* <select
           className={styles.select}
           name="category_id"
           value={snippet.category_id}
@@ -39,7 +39,7 @@ export default function Content() {
               {category.name}
             </option>
           ))}
-        </select>
+        </select> */}
         <textarea
           name="content"
           className={styles.content}
