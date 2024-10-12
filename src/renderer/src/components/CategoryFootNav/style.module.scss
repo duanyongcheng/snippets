@@ -1,0 +1,13 @@
+.nav {
+  // grid-area: nav;
+  @apply bg-slate-100 border-t border-r;
+  display: grid;
+  grid-template-columns: 1fr 1fr; // 将 nav 分为两列
+
+  .iconWrapper {
+    @apply flex items-center justify-center;
+    &:first-child {
+      @apply border-r;
+    }
+  }
+}

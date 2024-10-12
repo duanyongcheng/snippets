@@ -1,0 +1,12 @@
+.commonItem {
+  @apply flex items-center justify-between p-2 cursor-pointer truncate border-b;
+  &.active {
+    @apply bg-blue-400 shadow-md transition-all duration-300 rounded-lg text-white ml-2 hover:bg-blue-400;
+  }
+  &:hover {
+    @apply bg-slate-100 shadow-md transition-all duration-300 rounded-lg ml-2;
+  }
+}
+.search {
+  @apply outline-none text-sm font-bold px-3 py-2 border-b w-full flex flex-row justify-between items-center;
+}

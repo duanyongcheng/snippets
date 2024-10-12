@@ -1,19 +1,19 @@
 import { AllApplication, ApplicationTwo } from '@icon-park/react'
 import classNames from 'classnames'
 import { NavLink } from 'react-router-dom'
+import styles from '@renderer/assets/global.module.scss'
 
 function CategoryAction() {
   return (
-    <div>
-      <div className="px-2 mt-2 mb-1">快捷操作</div>
+    <div className="border-b-2 my-2">
+      <div className="px-2 my-2 mb-1 text-[10px]">快捷操作</div>
       <NavLink
         to={`/config/category/contentList`}
         key="all"
+        className={({ isActive }) => {
+          return classNames([styles.commonItem, { [styles.active]: isActive }])
+        }}
         end
-        // className={({ isActive }) => {
-        //   return classNames([{ ['commonItem']: isActive }])
-        // }}
-        className={classNames('commonItem')}
       >
         <div className="flex flex-row items-center">
           <AllApplication theme="outline" size="12" strokeWidth={3} />
@@ -22,12 +22,11 @@ function CategoryAction() {
       </NavLink>
       <NavLink
         to={`/config/category/contentList/0`}
-        className={classNames('commonItem')}
+        className={({ isActive }) => {
+          return classNames([styles.commonItem, { [styles.active]: isActive }])
+        }}
         key={0}
         end
-        // className={({ isActive }) => {
-        //   return classNames([{ ['commonItem']: isActive }])
-        // }}
       >
         <div className="flex flex-row items-center">
           <ApplicationTwo theme="outline" size="12" strokeWidth={3} />
