@@ -48,6 +48,7 @@ function CategoryItem({ category }: Props) {
           onContextMenu={useCategoryContextMenu(category)}
           onDragOver={(e) => {
             e.preventDefault() // 阻止默认行为，让ondrop生效
+            e.dataTransfer.dropEffect = 'move' // 去掉加号
             e.currentTarget.classList.add(styles.draging)
           }}
           onDragLeave={(e) => {
