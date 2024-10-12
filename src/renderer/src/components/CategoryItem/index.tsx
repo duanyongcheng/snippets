@@ -1,19 +1,24 @@
-import { Delete, FolderClose } from '@icon-park/react'
+import { FolderClose } from '@icon-park/react'
 import { NavLink, useSubmit } from 'react-router-dom'
-import styles from '@renderer/assets/global.module.scss'
+import globalStyles from '@renderer/assets/global.module.scss'
+import styles from './style.module.scss'
 import classNames from 'classnames'
-import { useContextMenu } from 'mantine-contextmenu'
 import { categoryStore } from '@renderer/store/categoryStore'
 import { Input } from 'antd'
+import useCategory from '@renderer/hooks/useCategory'
+import { snippetStore } from '@renderer/store/snippetStore'
+import useContent from '@renderer/hooks/useContent'
 
 interface Props {
   category: Category
 }
 
 function CategoryItem({ category }: Props) {
-  const { showContextMenu } = useContextMenu()
   const { editCategory, setEditCategory } = categoryStore()
   const submit = useSubmit()
+  const { useCategoryContextMenu } = useCategory()
+  const { updateCategoryId } = useContent()
+  const { sinppet } = snippetStore()
   return (
     <>
       {category.id === editCategory.id ? (
@@ -38,27 +43,26 @@ function CategoryItem({ category }: Props) {
           }}
           key={category.id}
           className={({ isActive }) => {
-            return classNames([styles.commonItem, { [styles.active]: isActive }])
+            return classNames([globalStyles.commonItem, { [globalStyles.active]: isActive }])
           }}
-          onContextMenu={showContextMenu(
-            [
-              {
-                key: 'remove',
-                icon: <Delete theme="outline" size="18" strokeWidth={3} />,
-                title: '删除分类',
-                onClick: () => {
-                  submit({ action: 'DELETE', id: category.id }, { method: 'delete' })
-                }
-              }
-            ],
-            {
-              className: 'contextMenu'
-            }
-          )}
+          onContextMenu={useCategoryContextMenu(category)}
+          onDragOver={(e) => {
+            e.preventDefault() // 阻止默认行为，让ondrop生效
+            e.currentTarget.classList.add(styles.draging)
+          }}
+          onDragLeave={(e) => {
+            e.currentTarget.classList.remove(styles.draging)
+          }}
+          onDrop={(e) => {
+            e.currentTarget.classList.remove(styles.draging)
+            console.info(sinppet)
+            updateCategoryId(sinppet.id, category.id)
+          }}
+          end
         >
-          <div className="flex flex-row items-center">
-            <FolderClose theme="outline" size="12" strokeWidth={3} />
-            <div className="ml-1">{category.name}</div>
+          <div className="flex flex-row items-center w-full">
+            <div className="truncate mr-2 flex-grow">{category.name}</div>
+            <FolderClose theme="outline" size="12" strokeWidth={3} className="flex-shrink-0" />
           </div>
         </NavLink>
       )}
