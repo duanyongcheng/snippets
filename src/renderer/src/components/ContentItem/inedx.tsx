@@ -25,7 +25,7 @@ export default function ContentItem({ content }: Props) {
           {
             key: 'remove',
             icon: <Delete theme="outline" size="18" strokeWidth={3} />,
-            title: 'Delete Snippets',
+            title: '删除片段',
             onClick: () => {
               submit({ action: 'delete', id: content.id }, { method: 'delete' })
             }

@@ -17,7 +17,7 @@ const update = (sql: string, params: Record<string, string | number>) => {
 }
 
 const remove = (sql: string, params = {}) => {
-  return db.prepare(sql).run(params)
+  return db.prepare(sql).run(params).changes
 }
 
 export { find, findOne, insert, update, remove }
