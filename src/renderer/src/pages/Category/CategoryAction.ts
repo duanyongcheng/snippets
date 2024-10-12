@@ -16,7 +16,16 @@ export default async ({ request }) => {
       window.api.sql('UPDATE snippets SET category_id = 0 WHERE category_id = @id', 'update', {
         id: data.id
       })
-      redirect('/config/catygory/contentList/0')
+      return redirect('/config/catygory/contentList/0')
+    }
+    case 'UPDATE': {
+      window.api.sql('UPDATE categories SET name = @name WHERE id = @id', 'update', {
+        name: data.name,
+        id: data.id
+      })
+      const url = `/config/category/contentList/${data.id}`
+      console.log(url)
+      return redirect(url)
     }
   }
   return {}

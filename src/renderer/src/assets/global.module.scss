@@ -1,5 +1,5 @@
 .commonItem {
-  @apply flex items-center justify-between p-2 cursor-pointer truncate border-b;
+  @apply flex items-center justify-between p-2 cursor-pointer truncate;
   &.active {
     @apply bg-blue-400 shadow-md transition-all duration-300 rounded-lg text-white ml-2 hover:bg-blue-400;
   }
