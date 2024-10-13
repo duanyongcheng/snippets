@@ -1,7 +1,7 @@
 import { FolderClose } from '@icon-park/react'
 import { NavLink, useSubmit } from 'react-router-dom'
 import globalStyles from '@renderer/assets/global.module.scss'
-import styles from './style.module.scss'
+import styles from './styles.module.scss'
 import classNames from 'classnames'
 import { categoryStore } from '@renderer/store/categoryStore'
 import { Input } from 'antd'

@@ -1,5 +1,5 @@
 import { Add, SettingConfig } from '@icon-park/react'
-import styles from './style.module.scss'
+import styles from './styles.module.scss'
 import { useSubmit } from 'react-router-dom'
 export default function CategortFootNav() {
   const submit = useSubmit()
