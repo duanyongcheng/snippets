@@ -1,16 +1,17 @@
 import Category from '@renderer/pages/Category'
 import CategoryAction from '@renderer/pages/Category/CategoryAction'
 import CategoryLoder from '@renderer/pages/Category/CategoryLoder'
-import Config from '@renderer/pages/Config'
+import Config from '@renderer/layouts/Config'
 import Content from '@renderer/pages/Content'
 import ContentAction from '@renderer/pages/Content/ContentAction'
 import ContentLoader from '@renderer/pages/Content/ContentLoader'
 import ContentList from '@renderer/pages/ContentList'
 import ContentListAction from '@renderer/pages/ContentList/ContentListAction'
 import ContentListLoader from '@renderer/pages/ContentList/ContentListLoader'
-import Home from '@renderer/pages/Home'
+import Home from '@renderer/layouts/Home'
 import Welcome from '@renderer/pages/Welcome'
 import { createHashRouter } from 'react-router-dom'
+import Settings from '@renderer/pages/Settings'
 
 const router = createHashRouter([
   {
@@ -21,6 +22,10 @@ const router = createHashRouter([
     path: 'config',
     element: <Config></Config>,
     children: [
+      {
+        index: true,
+        element: <Settings />
+      },
       {
         path: 'category',
         loader: CategoryLoder,
