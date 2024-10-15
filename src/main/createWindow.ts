@@ -1,7 +1,6 @@
 import { BrowserWindow, BrowserWindowConstructorOptions, shell } from 'electron'
 import { join } from 'path'
 import { is } from '@electron-toolkit/utils'
-import icon from '../../resources/icon.png?asset'
 import url from 'node:url'
 
 export interface WindowConfigOptions extends Partial<BrowserWindowConstructorOptions> {
@@ -10,24 +9,7 @@ export interface WindowConfigOptions extends Partial<BrowserWindowConstructorOpt
 }
 
 export function createWindow(options: WindowConfigOptions): BrowserWindow {
-  const win = new BrowserWindow(
-    Object.assign(
-      {
-        width: 600,
-        height: 600,
-        show: false,
-        transparent: true,
-        frame: false,
-        autoHideMenuBar: true,
-        ...(process.platform === 'linux' ? { icon } : {}),
-        webPreferences: {
-          preload: join(__dirname, '../preload/index.js'),
-          sandbox: false
-        }
-      },
-      options
-    )
-  )
+  const win = new BrowserWindow(Object.assign(options))
 
   if (is.dev && options.openDevTools) win.webContents.openDevTools()
   win.on('ready-to-show', () => {

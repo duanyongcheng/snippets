@@ -1,0 +1,9 @@
+.pages {
+  @apply w-screen h-screen bg-slate-200;
+}
+
+.title {
+  display: flex;
+  @apply flex-row items-center justify-center;
+  @apply p-5 text-base font-bold text-slate-900 font-size-2xl;
+}

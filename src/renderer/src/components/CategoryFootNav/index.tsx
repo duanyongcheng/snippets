@@ -1,6 +1,6 @@
 import { Add, SettingConfig } from '@icon-park/react'
 import styles from './styles.module.scss'
-import { useSubmit } from 'react-router-dom'
+import { Link, useSubmit } from 'react-router-dom'
 export default function CategortFootNav() {
   const submit = useSubmit()
   return (
@@ -16,7 +16,9 @@ export default function CategortFootNav() {
         />
       </div>
       <div className={styles.iconWrapper}>
-        <SettingConfig theme="outline" size="20" fill="#333" />
+        <Link to="/config/settings">
+          <SettingConfig theme="outline" size="20" fill="#333" />
+        </Link>
       </div>
     </div>
   )

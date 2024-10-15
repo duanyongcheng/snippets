@@ -24,12 +24,13 @@ export const config = {
     options: {
       width: 1250,
       height: 750,
-      autoHideMenuBar: true,
+      autoHideMenuBar: false,
       webPreferences: {
         preload: join(__dirname, '../preload/index.js'),
         sandbox: false
       },
-      hash: '/#/config/category/contentList'
+      // hash: '/#config/category/contentList'
+      hash: '/#/config/settings'
     }
   }
 } as Record<WindowNameType, { id: number; options: WindowConfigOptions }>
@@ -64,5 +65,5 @@ app.on('will-quit', () => {
 })
 
 app.whenReady().then(() => {
-  getWindowByName('search').show
+  getWindowByName('config').show
 })

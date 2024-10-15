@@ -23,7 +23,7 @@ const router = createHashRouter([
     element: <Config></Config>,
     children: [
       {
-        index: true,
+        path: 'settings',
         element: <Settings />
       },
       {
