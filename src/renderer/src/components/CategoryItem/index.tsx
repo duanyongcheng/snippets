@@ -43,7 +43,11 @@ function CategoryItem({ category }: Props) {
           }}
           key={category.id}
           className={({ isActive }) => {
-            return classNames([globalStyles.commonItem, { [globalStyles.active]: isActive }])
+            return classNames([
+              globalStyles.commonItem,
+              styles.notDrag,
+              { [globalStyles.active]: isActive }
+            ])
           }}
           onContextMenu={useCategoryContextMenu(category)}
           onDragOver={(e) => {
