@@ -4,7 +4,8 @@ declare global {
   interface Window {
     electron: ElectronAPI
     api: {
-      hideWindow: () => void
+      openWindow: (name: WindowNameType) => void
+      closeWindow: (name: WindowNameType) => void
       shortCut: (type: string, searchCout: string) => Promise<boolean>
       setIgnoreMouseEvents: (ignore: boolean, options?: { forward: boolean }) => void
       openConfigWindow: () => void

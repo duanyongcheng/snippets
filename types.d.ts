@@ -1,4 +1,5 @@
 type SqlActionType = 'find' | 'findOne' | 'insert' | 'update' | 'remove'
+type WindowNameType = 'search' | 'config'
 type SqlAction = {
   sql: string
   type: SqlActionType

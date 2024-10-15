@@ -13,7 +13,7 @@ export default function Search(): JSX.Element {
           fill="#333"
           className="nodrag mr-1"
           onClick={() => {
-            window.api.openConfigWindow()
+            window.api.openWindow('config')
           }}
         />
         <Input

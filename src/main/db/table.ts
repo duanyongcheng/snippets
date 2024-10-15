@@ -5,8 +5,7 @@ db.exec(`
     CREATE TABLE IF NOT EXISTS categories (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
-        created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        UNIQUE(name)
+        created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
     )
 `)
 

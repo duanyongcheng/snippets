@@ -39,7 +39,7 @@ export default () => {
     const content = data[index].content
     console.log(content)
     if (content) await navigator.clipboard.writeText(content)
-    window.api.hideWindow()
+    window.api.closeWindow('search')
     setData([])
     setSearch('')
   }
