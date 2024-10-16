@@ -18,3 +18,13 @@ type Category = {
   name: string
   created_at: string
 }
+
+type Config = {
+  id: number
+  content: string
+}
+
+type ConfigContent = {
+  shortCut: string
+  dbConfig: string
+}

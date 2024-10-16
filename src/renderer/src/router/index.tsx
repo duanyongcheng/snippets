@@ -12,6 +12,8 @@ import Home from '@renderer/layouts/Home'
 import Welcome from '@renderer/pages/Welcome'
 import { createHashRouter } from 'react-router-dom'
 import Settings from '@renderer/pages/Settings'
+import SettingsAction from '@renderer/pages/Settings/SettingsAction'
+import SettingsLoader from '@renderer/pages/Settings/SettingsLoader'
 
 const router = createHashRouter([
   {
@@ -24,6 +26,8 @@ const router = createHashRouter([
     children: [
       {
         path: 'settings',
+        action: SettingsAction,
+        loader: SettingsLoader,
         element: <Settings />
       },
       {

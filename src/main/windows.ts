@@ -22,6 +22,7 @@ export const config = {
   config: {
     id: 0,
     options: {
+      openDevTools: true,
       width: 1250,
       height: 750,
       autoHideMenuBar: false,

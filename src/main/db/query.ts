@@ -8,8 +8,8 @@ const findOne = (sql: string) => {
   return db.prepare(sql).get()
 }
 
-const insert = (sql: string) => {
-  return db.prepare(sql).run().lastInsertRowid
+const insert = (sql: string, params = {}) => {
+  return db.prepare(sql).run(params).lastInsertRowid
 }
 
 const update = (sql: string, params: Record<string, string | number>) => {
