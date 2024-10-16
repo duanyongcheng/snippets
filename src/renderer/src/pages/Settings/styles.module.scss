@@ -1,9 +1,29 @@
-.pages {
-  @apply w-screen h-screen bg-slate-200;
+// styles.module.scss
+
+.container {
+  @apply min-h-screen bg-white flex flex-col items-center justify-center p-8;
+}
+
+.formWrapper {
+  @apply w-full max-w-3xl;
 }
 
 .title {
-  display: flex;
-  @apply flex-row items-center justify-center;
-  @apply p-5 text-base font-bold text-slate-900 font-size-2xl;
+  @apply text-5xl font-extrabold text-gray-900 mb-12 border-b-4 border-yellow-400 pb-4 inline-block;
+}
+
+.form {
+  @apply w-full space-y-10;
+}
+
+.label {
+  @apply text-xl font-medium text-gray-800;
+}
+
+.input {
+  @apply w-full h-14 border-0 border-b-2 border-gray-200 focus:border-yellow-400 text-lg transition-colors duration-300;
+}
+
+.submitButton {
+  @apply w-full h-14 text-xl font-bold bg-yellow-400 hover:bg-yellow-500 text-gray-900 border-none rounded-none transition-colors duration-300;
 }
