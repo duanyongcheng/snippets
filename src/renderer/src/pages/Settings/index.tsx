@@ -2,6 +2,7 @@ import type { FormProps } from 'antd'
 import { Button, Form, Input } from 'antd'
 import styles from './styles.module.scss'
 import { useLoaderData, useSubmit } from 'react-router-dom'
+import ShortcutInput from '@renderer/components/ShortcutInput/inedex'
 
 type FieldType = {
   shortCut?: string
@@ -39,7 +40,7 @@ export default function Settings() {
             name="shortCut"
             initialValue={config.shortCut}
           >
-            <Input className={styles.input} />
+            <ShortcutInput />
           </Form.Item>
 
           <Form.Item<FieldType>

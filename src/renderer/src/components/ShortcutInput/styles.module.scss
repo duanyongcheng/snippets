@@ -1,0 +1,32 @@
+.shortcutInputWrapper {
+  @apply relative w-full h-14 border-0 border-b-2 border-gray-200 transition-all duration-300 cursor-text;
+
+  &.focused {
+    @apply border-yellow-400;
+    box-shadow: 0 0 0 2px rgba(255, 213, 79, 0.2);
+  }
+}
+
+.hiddenInput {
+  @apply absolute opacity-0 w-full h-full cursor-default;
+
+  &:focus {
+    @apply outline-none;
+  }
+}
+
+.shortcutDisplay {
+  @apply absolute top-0 left-0 right-0 bottom-0 flex items-center gap-2 px-4;
+}
+
+.keyBlock {
+  @apply bg-gray-200 text-gray-700 px-2 py-1 rounded text-sm font-medium transition-all duration-300;
+
+  &.focused {
+    @apply bg-blue-200 text-yellow-800;
+  }
+}
+
+.placeholder {
+  @apply text-gray-400;
+}
