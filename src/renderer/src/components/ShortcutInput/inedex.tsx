@@ -10,7 +10,7 @@ interface ShortcutInputProps {
 const ShortcutInput: React.FC<ShortcutInputProps> = ({ value, onChange }) => {
   const [shortcut, setShortcut] = useState(value || '')
   const [isFocused, setIsFocused] = useState(false)
-  const inputRef = useRef<Input>(null)
+  const inputRef = useRef<React.RefObject<HTMLInputElement>>(null)
 
   useEffect(() => {
     setShortcut(value || '')
@@ -32,7 +32,7 @@ const ShortcutInput: React.FC<ShortcutInputProps> = ({ value, onChange }) => {
         return
       }
 
-      const modifiers = []
+      const modifiers = [] as string[]
       if (ctrlKey) modifiers.push('Ctrl')
       if (shiftKey) modifiers.push('Shift')
       if (altKey) modifiers.push('Alt')

@@ -1,6 +1,7 @@
 import { join } from 'path'
 import { WindowConfigOptions, createWindow } from './createWindow'
 import { BrowserWindow, IpcMainEvent, IpcMainInvokeEvent, app, globalShortcut } from 'electron'
+import { findConfig } from './db/query'
 
 export const config = {
   search: {
@@ -48,15 +49,16 @@ export const getWindowByName = (name: WindowNameType) => {
 export const getWindowByEvent = (event: IpcMainEvent | IpcMainInvokeEvent) => {
   return BrowserWindow.fromWebContents(event.sender)!
 }
-export function registerSearchShortCut(win: BrowserWindow, searchCout: string) {
+export function registerShortCut(win: BrowserWindow, searchCout: string) {
+  const config: ConfigContent = findConfig()
+  if (config!.shortCut !== searchCout) {
+    globalShortcut.unregister(config!.shortCut)
+  }
+  if (globalShortcut.isRegistered(searchCout)) {
+    return false
+  }
   return globalShortcut.register(searchCout, () => {
     win.isVisible() ? win.hide() : win.show()
-  })
-}
-
-export function registerConfigShortCut(searchCout: string) {
-  return globalShortcut.register(searchCout, () => {
-    getWindowByName('config').show()
   })
 }
 
@@ -67,4 +69,8 @@ app.on('will-quit', () => {
 
 app.whenReady().then(() => {
   getWindowByName('config').show
+  getWindowByName('search').show
+  const config = findConfig()
+  // console.info(config)
+  registerShortCut(getWindowByName('search'), config.shortCut)
 })

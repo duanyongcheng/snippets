@@ -1,0 +1,11 @@
+.wrapper {
+  @apply flex items-center gap-2;
+}
+
+.input {
+  @apply flex-grow;
+}
+
+.button {
+  @apply flex-shrink-0;
+}

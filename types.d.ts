@@ -1,3 +1,4 @@
+type ShortCutType = 'showShortCut' | 'configPage'
 type SqlActionType = 'find' | 'findOne' | 'insert' | 'update' | 'remove'
 type WindowNameType = 'search' | 'config'
 type SqlAction = {

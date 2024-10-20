@@ -9,7 +9,7 @@ const api = {
   openWindow: (name: WindowNameType) => {
     ipcRenderer.send('openWindow', name)
   },
-  shortCut: (type: string, shortCut) => {
+  shortCut: (type: ShortCutType, shortCut) => {
     return ipcRenderer.invoke('shortCut', type, shortCut)
   },
   setIgnoreMouseEvents: (ignore: boolean, options?: { forward: boolean }) => {

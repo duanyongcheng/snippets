@@ -1,10 +1,5 @@
-import { IpcMainEvent, IpcMainInvokeEvent, globalShortcut, ipcMain } from 'electron'
-import {
-  getWindowByName,
-  getWindowByEvent,
-  registerSearchShortCut,
-  registerConfigShortCut
-} from './windows'
+import { IpcMainEvent, IpcMainInvokeEvent, ipcMain } from 'electron'
+import { getWindowByName, getWindowByEvent, registerShortCut } from './windows'
 ipcMain.on('openWindow', (_event: IpcMainEvent, name: WindowNameType) => {
   getWindowByName(name).show()
 })
@@ -19,30 +14,13 @@ ipcMain.on(
     getWindowByEvent(event).setIgnoreMouseEvents(ignore, options)
   }
 )
-
-const shortCutConfig = {
-  search: '',
-  config: ''
-}
-
-ipcMain.handle(
-  'shortCut',
-  (event: IpcMainInvokeEvent, type: string = 'search|config', shortCut: string) => {
-    switch (type) {
-      case 'search':
-        if (shortCutConfig.search) {
-          globalShortcut.unregister(shortCutConfig.search)
-        }
-        shortCutConfig.search = shortCut
-        return registerSearchShortCut(getWindowByEvent(event), shortCut)
-      case 'config':
-        if (shortCutConfig.config) {
-          globalShortcut.unregister(shortCutConfig.config)
-        }
-        shortCutConfig.config = shortCut
-        return registerConfigShortCut(shortCut)
-      default:
-        return false
-    }
+ipcMain.handle('shortCut', (event: IpcMainInvokeEvent, type: ShortCutType, shortCut: string) => {
+  switch (type) {
+    case 'showShortCut':
+      return registerShortCut(getWindowByName('search'), shortCut)
+    case 'configPage':
+      return registerShortCut(getWindowByName('config'), shortCut)
+    default:
+      return false
   }
-)
+})

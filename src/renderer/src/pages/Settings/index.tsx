@@ -1,8 +1,9 @@
 import type { FormProps } from 'antd'
-import { Button, Form, Input } from 'antd'
+import { Button, Form } from 'antd'
 import styles from './styles.module.scss'
 import { useLoaderData, useSubmit } from 'react-router-dom'
 import ShortcutInput from '@renderer/components/ShortcutInput/inedex'
+import DirectoryInput from '@renderer/components/DirectoryInput/index'
 
 type FieldType = {
   shortCut?: string
@@ -15,7 +16,7 @@ export default function Settings() {
 
   const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
     console.info('Success:', values)
-    submit(values, { method: 'POST' })
+    submit({ action: 'shortCut', data: JSON.stringify(values) }, { method: 'POST' })
   }
 
   const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
@@ -48,7 +49,7 @@ export default function Settings() {
             name="dbConfig"
             initialValue={config.dbConfig}
           >
-            <Input className={styles.input} />
+            <DirectoryInput />
           </Form.Item>
 
           <Form.Item>

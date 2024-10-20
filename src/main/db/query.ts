@@ -20,4 +20,13 @@ const remove = (sql: string, params = {}) => {
   return db.prepare(sql).run(params).changes
 }
 
-export { find, findOne, insert, update, remove }
+const findConfig = (): ConfigContent => {
+  const config = findOne('SELECT * FROM config WHERE id = 1') as Config
+  if (config) {
+    return JSON.parse(config.content) as ConfigContent
+  } else {
+    return {} as ConfigContent
+  }
+}
+
+export { find, findOne, insert, update, remove, findConfig }
