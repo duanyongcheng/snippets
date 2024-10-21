@@ -31,8 +31,8 @@ export const config = {
         preload: join(__dirname, '../preload/index.js'),
         sandbox: false
       },
-      // hash: '/#config/category/contentList'
-      hash: '/#/config/settings'
+      hash: '/#config/category/contentList'
+      // hash: '/#config'
     }
   }
 } as Record<WindowNameType, { id: number; options: WindowConfigOptions }>
@@ -68,7 +68,7 @@ app.on('will-quit', () => {
 })
 
 app.whenReady().then(() => {
-  getWindowByName('config').show
+  // getWindowByName('config').show
   getWindowByName('search').show
   const config = findConfig()
   // console.info(config)

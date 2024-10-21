@@ -21,14 +21,10 @@ const DirectoryInput: React.FC<DirectoryInputProps> = ({ value, onChange }) => {
 
   const handleChooseDirectory = async () => {
     try {
-      // 假设 window.electron.showOpenDialog 是可用的
-      const result = await window.electron.showOpenDialog({
-        properties: ['openDirectory']
-      })
-
-      if (!result.canceled && result.filePaths.length > 0) {
-        setDirectory(result.filePaths[0])
-        onChange?.(result.filePaths[0])
+      const result = await window.electron.ipcRenderer.invoke('open-directory-dialog')
+      if (result) {
+        setDirectory(result)
+        onChange?.(result)
       }
     } catch (error) {
       console.error('Failed to open directory dialog:', error)
