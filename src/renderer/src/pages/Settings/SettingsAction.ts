@@ -24,18 +24,12 @@ const changeShortCut = async (data: ConfigContent) => {
     const content = JSON.parse(config.content)
     content.shortCut = data.shortCut
     console.info('content', content)
-    const isRegistered = await window.api.shortCut('configPage', data.shortCut)
-    console.info('isRegistered', isRegistered)
-    if (isRegistered) {
-      return await window.api.sql('UPDATE config SET content = @content WHERE id = 1', 'update', {
-        content: JSON.stringify(content)
-      })
-    } else {
-      return { status: 400, message: 'shortCut already registered' }
-    }
+    await window.api.shortCut('showShortCut', content.shortCut)
   } else {
-    return await window.api.sql('INSERT INTO config (content) VALUES (@content)', 'insert', {
+    await window.api.sql('INSERT INTO config (content) VALUES (@content)', 'insert', {
       content: JSON.stringify(data)
     })
+    await window.api.shortCut('showShortCut', data.shortCut)
   }
+  return {}
 }

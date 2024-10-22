@@ -63,7 +63,6 @@ function CategoryItem({ category }: Props) {
             console.info(sinppet)
             updateCategoryId(sinppet.id, category.id)
           }}
-          end
         >
           <div className="flex flex-row items-center w-full">
             <div className="truncate mr-2 flex-grow">{category.name}</div>

@@ -12,9 +12,12 @@ interface Props {
 export default function ContentItem({ content }: Props) {
   const { useContentContextMenu } = useContent()
   const { setSnippet } = snippetStore()
+  console.log('ContentItem', content)
+  const buildUrl = `/config/category/contentList/${content.category_id}/content/${content.id}`
+  console.info('ContentItem URL ', buildUrl)
   return (
     <NavLink
-      to={`/config/category/contentList/${content.category_id}/content/${content.id}`}
+      to={buildUrl}
       key={content.id}
       className={({ isActive }) => {
         return classNames([globalStyles.commonItem, { [globalStyles.active]: isActive }])

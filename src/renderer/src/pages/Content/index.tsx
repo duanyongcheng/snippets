@@ -25,13 +25,14 @@ export default function Content() {
             submit(e.target.form)
           }}
         />
-        {/* <select
+        <select
           className={styles.select}
           name="category_id"
           value={snippet.category_id}
           onChange={(e) => {
             submit(e.target.form)
           }}
+          hidden
         >
           <option defaultValue={0}>未分类</option>
           {categories.map((category) => (
@@ -39,7 +40,7 @@ export default function Content() {
               {category.name}
             </option>
           ))}
-        </select> */}
+        </select>
         <textarea
           name="content"
           className={styles.content}

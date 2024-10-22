@@ -1,6 +1,7 @@
 import { redirect } from 'react-router-dom'
 
 export default async ({ params, request }) => {
+  console.info('ContentListAction', params)
   const cid = params.cid || 0
   const formData = await request.formData()
   switch (formData.get('action')) {

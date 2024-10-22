@@ -6,16 +6,15 @@ import url from 'node:url'
 export interface WindowConfigOptions extends Partial<BrowserWindowConstructorOptions> {
   openDevTools?: boolean
   hash?: string
-  icon?: string // 添加 icon 属性
+  icon?: string
 }
 
 export function createWindow(options: WindowConfigOptions): BrowserWindow {
-  // 设置默认图标路径
-  const defaultIconPath = join(__dirname, '../resources/icon.png') // 请确保这个路径是正确的
+  const defaultIconPath = join(__dirname, '../resources/icon.png')
 
   const windowOptions: BrowserWindowConstructorOptions = {
     ...options,
-    icon: options.icon || defaultIconPath // 使用提供的图标或默认图标
+    icon: options.icon || defaultIconPath
   }
 
   const win = new BrowserWindow(windowOptions)
@@ -30,8 +29,8 @@ export function createWindow(options: WindowConfigOptions): BrowserWindow {
     return { action: 'deny' }
   })
 
-  // HMR for renderer base on electron-vite cli.
-  // Load the remote URL for development or the local html file for production.
+  // 移除 closed 事件监听器，因为我们将在主文件中处理它
+
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
     win.loadURL(process.env['ELECTRON_RENDERER_URL'] + options.hash)
   } else {

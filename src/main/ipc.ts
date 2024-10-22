@@ -15,12 +15,18 @@ ipcMain.on(
   }
 )
 ipcMain.handle('shortCut', (event: IpcMainInvokeEvent, type: ShortCutType, shortCut: string) => {
+  console.log(`Received shortCut request: type=${type}, shortCut=${shortCut}`)
+  let result: boolean
   switch (type) {
     case 'showShortCut':
-      return registerShortCut(getWindowByName('search'), shortCut)
+      result = registerShortCut('search', shortCut)
+      break
     case 'configPage':
-      return registerShortCut(getWindowByName('config'), shortCut)
+      result = registerShortCut('config', shortCut)
+      break
     default:
-      return false
+      result = false
   }
+  console.log(`Shortcut registration result: ${result}`)
+  return result
 })
