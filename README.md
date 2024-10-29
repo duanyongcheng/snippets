@@ -1,71 +1,153 @@
 # Code Snippets Manager
 
-Code Snippets Manager 是一个简单而强大的桌面应用程序，用于存储和管理经常使用的代码或文本片段。
+<div align="center">
 
-## 功能特点
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Platform](https://img.shields.io/badge/platform-Windows%20|%20MacOS%20|%20Linux-lightgrey.svg)
 
-- 存储和管理代码片段和文本片段
-- 通过标签对片段进行分组和组织
-- 支持新增标签和片段
-- 双击修改标签名称
-- 拖拽片段以修改所属标签
-- 右键菜单支持删除标签和片段
-- 快速搜索功能，方便查找所需片段
+一个现代化的跨平台代码片段管理工具，帮助开发者高效管理和复用代码片段。
 
-## 技术栈
+</div>
 
-- React: 用于构建用户界面
-- Electron: 实现跨平台桌面应用
-- Zustand: 状态管理
-- SQLite: 本地数据存储
-- Vite: 项目构建和开发工具
-- JavaScript: 主要编程语言
+## ✨ 主要特性
 
-## 安装
+- 🗂 智能分类: 通过标签系统灵活组织代码片段
+- 🔍 快速搜索: 支持实时搜索，快速定位所需片段
+- ✏️ 便捷编辑: 支持双击修改标签名称
+- 🖱 拖拽操作: 通过拖拽轻松调整片段分类
+- 📝 代码高亮: 支持多种编程语言的语法高亮
+- ⚡️ 快捷键支持: 自定义快捷键提升操作效率
+- 💾 本地存储: 使用SQLite数据库，确保数据安全
 
-1. 克隆仓库:
+## 🖥 应用界面
 
-   ```bash
-   git clone https://github.com/your-username/code-snippets-manager.git
-   ```
+<div align="center">
 
-2. 进入项目目录:
+![设置界面](./config.png)
+![主界面](./search.png)
 
-   ```bash
-   cd code-snippets-manager
-   ```
+</div>
 
-3. 安装依赖:
+## 🚀 快速开始
 
-   ```bash
-   npm install
-   ```
+### 环境要求
 
-4. 运行应用:
-   ```bash
-   npm run dev
-   ```
+- Node.js 16.0.0 或更高版本
+- npm 7.0.0 或更高版本
 
-## 使用说明
+### 安装步骤
 
-1. 启动应用后，您可以看到主界面，左侧是标签列表，右侧是片段列表。
-2. 点击 "+" 按钮添加新的标签或片段。
-3. 双击标签名称可以进行修改。
-4. 拖拽片段到其他标签可以更改其分组。
-5. 右键点击标签或片段可以删除它们。
-6. 使用顶部的搜索栏快速查找所需的片段。
+1. 克隆仓库
 
-## 配置
+```bash
+git clone https://github.com/dyc54/code-snippets-manager.git
+```
 
-在设置页面，您可以:
+2. 进入项目目录
 
-- 自定义快捷键
-- 设置数据库存储位置
+```bash
+cd code-snippets-manager
+```
 
-## 贡献
+3. 安装依赖
 
-欢迎提交问题和拉取请求。对于重大更改，请先开 issue 讨论您想要改变的内容。
+```bash
+npm install
+```
 
-## 许可证
+4. 启动应用
 
-[MIT](https://choosealicense.com/licenses/mit/)
+```bash
+# 开发模式
+npm run dev
+
+# 构建应用
+npm run build
+
+# 运行构建后的应用
+npm run start
+```
+
+## 📖 使用指南
+
+### 基本操作
+
+1. **添加片段**
+
+   - 点击左下角 "+" 按钮
+   - 选择代码片段所属标签
+   - 输入代码内容并保存
+
+2. **管理标签**
+
+   - 双击标签名称进行修改
+   - 拖拽片段到不同标签进行分类
+   - 右键点击标签进行更多操作
+
+3. **搜索片段**
+   - 使用顶部搜索栏
+   - 支持按标签、内容搜索
+   - 实时展示搜索结果
+
+### 快捷键
+
+| 功能     | Windows/Linux | MacOS  |
+| -------- | ------------- | ------ |
+| 新建片段 | Ctrl + N      | ⌘ + N  |
+| 保存片段 | Ctrl + S      | ⌘ + S  |
+| 搜索片段 | Ctrl + F      | ⌘ + F  |
+| 删除片段 | Delete        | Delete |
+
+## ⚙️ 配置说明
+
+配置文件位于 `~/.config/snippet-manager/config.json`（可在设置页面修改）：
+
+- 待实现
+
+```json
+{
+  "database": {
+    "path": ".config/snippet/snippet.db"
+  },
+  "shortcuts": {
+    "newSnippet": "CommandOrControl+N",
+    "saveSnippet": "CommandOrControl+S"
+  }
+}
+```
+
+## 🛠 技术栈
+
+- **前端框架**: React 18
+- **桌面框架**: Electron 24
+- **状态管理**: Zustand
+- **数据存储**: SQLite
+- **构建工具**: Vite
+- **编程语言**: JavaScript/TypeScript
+
+## 🤝 贡献指南
+
+1. Fork 项目
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交修改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 提交 Pull Request
+
+## 📋 后续规划
+
+- [ ] 支持代码片段加密存储
+- [ ] 添加云同步功能
+- [ ] 支持更多编程语言的语法高亮
+- [ ] 优化搜索算法
+- [ ] 添加代码片段分享功能
+
+## 📝 开源协议
+
+本项目基于 MIT 协议开源，详见 [LICENSE](LICENSE) 文件。
+
+## 🙏 致谢
+
+- [Electron](https://www.electronjs.org/)
+- [React](https://reactjs.org/)
+- [Zustand](https://github.com/pmndrs/zustand)
+- [SQLite](https://www.sqlite.org/)
