@@ -2,7 +2,6 @@ import { join } from 'path'
 import { WindowConfigOptions, createWindow } from './createWindow'
 import { BrowserWindow, IpcMainEvent, IpcMainInvokeEvent, app, globalShortcut } from 'electron'
 import { findConfig, update } from './db/query'
-import { subscribe } from 'diagnostics_channel'
 
 export const config = {
   search: {

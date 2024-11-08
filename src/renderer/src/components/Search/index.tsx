@@ -21,6 +21,11 @@ export default function Search(): JSX.Element {
           onChange={handelSearch}
           autoFocus
           className="w-full outline-none text-2xl text-slate-600 bg-slate-200"
+          onKeyDown={(e) => {
+            if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+              e.preventDefault()
+            }
+          }}
         ></Input>
       </section>
       <section className="text-slate-600 text-center text-xs mt-2">dyc-test-snippets</section>
