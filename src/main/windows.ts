@@ -1,7 +1,8 @@
 import { join } from 'path'
 import { WindowConfigOptions, createWindow } from './createWindow'
 import { BrowserWindow, IpcMainEvent, IpcMainInvokeEvent, app, globalShortcut } from 'electron'
-import { findConfig, update } from './db/query'
+import { update } from './db/query'
+import { getConfig, initStore, setConfig } from './store'
 
 export const config = {
   search: {
@@ -55,7 +56,7 @@ export const getWindowByEvent = (event: IpcMainEvent | IpcMainInvokeEvent) => {
   return BrowserWindow.fromWebContents(event.sender)!
 }
 export function registerShortCut(winName: WindowNameType, searchCout: string) {
-  const config: ConfigContent = findConfig()
+  const config: ConfigContent = getConfig()
   console.info('config', config)
   console.info('searchCout', searchCout)
   if (config!.shortCut !== searchCout) {
@@ -85,9 +86,8 @@ export function registerShortCut(winName: WindowNameType, searchCout: string) {
     }
   })
   if (success) {
-    const content = { content: JSON.stringify(config) }
-    console.info('content', content)
-    update('UPDATE config SET content = @content WHERE id = 1', content)
+    console.info('config', JSON.stringify(config))
+    setConfig(config)
   }
   return success
 }
@@ -97,8 +97,14 @@ app.on('will-quit', () => {
   globalShortcut.unregisterAll()
 })
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
   getWindowByName('search')
-  const config = findConfig()
-  registerShortCut('search', config.shortCut)
+  await initStore()
+  const config = getConfig()
+  if (config?.shortCut) {
+    registerShortCut('search', config.shortCut)
+  } else {
+    registerShortCut('search', 'CommandOrControl+Shift+;')
+    setConfig({ shortCut: 'CommandOrControl+Shift+;', dbConfig: '~/.config/snippets' })
+  }
 })

@@ -11,6 +11,9 @@ declare global {
       openConfigWindow: () => void
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       sql: <T>(sql: string, type: SqlActionType, params?: Record<string, any>) => Promise<T>
+
+      // store
+      getConfig: () => Promise<ConfigContent>
     }
   }
 }

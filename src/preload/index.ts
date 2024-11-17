@@ -25,6 +25,11 @@ const api = {
   sql: (sql: string, type: SqlActionType, params?: Record<string, any>) => {
     console.info('sql', sql, type, params)
     return ipcRenderer.invoke('sql', sql, type, params)
+  },
+
+  // store
+  getConfig: () => {
+    return ipcRenderer.invoke('getConfig')
   }
 }
 

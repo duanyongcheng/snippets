@@ -1,5 +1,6 @@
 import { IpcMainEvent, IpcMainInvokeEvent, ipcMain } from 'electron'
 import { getWindowByName, getWindowByEvent, registerShortCut } from './windows'
+import { getConfig } from './store'
 ipcMain.on('openWindow', (_event: IpcMainEvent, name: WindowNameType) => {
   getWindowByName(name).show()
 })
@@ -14,7 +15,12 @@ ipcMain.on(
     getWindowByEvent(event).setIgnoreMouseEvents(ignore, options)
   }
 )
-ipcMain.handle('shortCut', (event: IpcMainInvokeEvent, type: ShortCutType, shortCut: string) => {
+
+ipcMain.handle('getConfig', () => {
+  return getConfig()
+})
+
+ipcMain.handle('shortCut', (_event: IpcMainInvokeEvent, type: ShortCutType, shortCut: string) => {
   console.log(`Received shortCut request: type=${type}, shortCut=${shortCut}`)
   let result: boolean
   switch (type) {

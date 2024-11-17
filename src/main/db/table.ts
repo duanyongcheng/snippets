@@ -17,10 +17,3 @@ db.exec(`
         created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
     )
 `)
-
-db.exec(`
-    CREATE TABLE IF NOT EXISTS config (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        content TEXT NOT NULL
-    )
-`)
