@@ -15,6 +15,7 @@ export default function Content() {
     <Form method="PUT" key={snippet.id}>
       <main className={styles.container}>
         <input name="id" type="hidden" value={snippet.id} />
+        <input name="category_id" type="hidden" value={snippet.category_id} />
         <input
           name="title"
           placeholder="请输入title"
@@ -25,22 +26,6 @@ export default function Content() {
             submit(e.target.form)
           }}
         />
-        <select
-          className={styles.select}
-          name="category_id"
-          value={snippet.category_id}
-          onChange={(e) => {
-            submit(e.target.form)
-          }}
-          hidden
-        >
-          <option defaultValue={0}>未分类</option>
-          {categories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
         <textarea
           name="content"
           className={styles.content}
